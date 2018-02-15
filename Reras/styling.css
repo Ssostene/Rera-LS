@@ -1,0 +1,150 @@
+@charset "utf-8";
+/* CSS Document */
+
+html{
+	background-color: lightgreen;
+
+}
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+	
+  /* Preserve aspet ratio */
+ max-width: 100%;
+    height: 100%;
+	opacity: 0.7;
+}
+
+/**************************************************/
+
+header .bord {
+	background: linear-gradient(to right, #f6df0a 20%, #e5007d 20%, #ff5000 50%, #00a9aa 50%, #76b82a 80%, #f6df0a 80%);
+  position: static;
+  content: '';
+  height: 5px;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+header img{
+	position: relative;
+	z-index: 1;
+	top: 10px;
+	max-width:100%;
+	height: 100%;
+	margin-left: 2.5%;
+	
+}
+
+nav {
+	position: relative;
+	background-color: black;
+	height: 50px;
+	top: -90px;
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+	
+
+    &#{$infix} {
+      @include media-breakpoint-down($breakpoint) {
+        > .container,
+        > .container-fluid {
+          padding-right: 0;
+          padding-left: 0;
+		  
+        }
+      }
+
+      @include media-breakpoint-up($next) {
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+
+        .navbar-nav {
+          flex-direction: row;
+
+          .dropdown-menu {
+            position: absolute;
+          }
+
+          .dropdown-menu-right {
+            right: 0;
+            left: auto; /* Reset the default from `.dropdown-menu`*/
+			
+          }
+
+          .nav-link {
+            padding-right: $navbar-nav-link-padding-x;
+            padding-left: $navbar-nav-link-padding-x;
+          }
+        }
+
+        /* For nesting containers, have to redeclare for alignment purposes*/
+        > .container,
+        > .container-fluid {
+          flex-wrap: nowrap;
+        }
+
+        .navbar-collapse {
+          display: flex !important;  /*stylelint-disable-line declaration-no-important
+
+          // Changes flex-bases to auto because of an IE10 bug*/
+          flex-basis: auto;
+        }
+
+        .navbar-toggler {
+          display: none;
+        }
+
+        .dropup {
+          .dropdown-menu {
+            top: auto;
+            bottom: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+header .navbar ul{
+	position: relative;
+	left: 15%;
+}
+
+header .navbar ul li .dropdown-menu a:hover{
+	opacity: 0.7;
+}
+
+header .navbar ul li .dropdown-menu{
+	opacity: 0.95;
+}
+
+header #btn{
+	position: relative;
+	overflow: visible;
+	background-color: white;
+}
+
+
+/**********************************************************/
+body{
+position: relative;
+background-color: #f1f2ec;
+font-family: Segoe UI;
+left: 10%;
+right: 10%;
+top: 10px;
+width: 80%;
+height: auto;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
